@@ -105,9 +105,9 @@ final class HttpRequest implements Runnable {
 		StringTokenizer tokens = new StringTokenizer(requestLine); 
 		tokens.nextToken(); // skip over the method, which should be "GET" 
 		String fileName = tokens.nextToken();
-		// Prepend a "." so that file request is within the current directory. 
+		// Prepend a "." so that the file request is within the current directory. 
 		fileName = "." + fileName;
-		// Remove a trailing /
+		// Remove a trailing '/'
 		if (fileName.charAt(fileName.length()-1) == '/') {
 			fileName = fileName.substring(0,fileName.length()-1);
 		}
@@ -146,11 +146,11 @@ final class HttpRequest implements Runnable {
 			contentTypeLine = "Content-type: " +
 					contentType(fileName) + CRLF;
 		} else {
-				statusLine = "HTTP/1.1 404 Not Found" + CRLF;
-				contentTypeLine = "Content-type: text/html" + CRLF;
-				entityBody = "<HTML>" +
-						"<HEAD><TITLE>Not Found</TITLE></HEAD>" + 
-						"<BODY>Not Found</BODY></HTML>";
+			statusLine = "HTTP/1.1 404 Not Found" + CRLF;
+			contentTypeLine = "Content-type: text/html" + CRLF;
+			entityBody = "<HTML>" +
+					"<HEAD><TITLE>Not Found</TITLE></HEAD>" + 
+					"<BODY>Not Found</BODY></HTML>";
 		}
 		
 		// Send the status line.
