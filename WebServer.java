@@ -225,9 +225,9 @@ final class HttpRequest implements Runnable {
 		}
 	}
 	
-   /** 
-    * Prepare the thread for execution 
-	*/
+	/** 
+     * Prepare the thread for execution 
+	 */
 	public void start () {
       if (t == null) {
          t = new Thread (this, number+"");
